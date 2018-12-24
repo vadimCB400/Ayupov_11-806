@@ -1,0 +1,48 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class hw2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int columns = sc.nextInt();
+        int lines = sc.nextInt();
+        int[][] arr = new int[columns][lines];
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        int columnsSum = 0;
+        int maxColumnsIndex = 0;
+        int linesSum = 0;
+        int maxLinesIndex = 0;
+        for (int i = 0; i < lines; i++) {
+            int maxLinesSum = 0;
+            for (int j = 0; j < columns; j++) {
+                maxLinesSum += arr[i][j];
+            }
+            if (maxLinesSum > linesSum){
+                linesSum = maxLinesSum;
+                maxLinesIndex = i;
+            }
+        }
+        for (int i = 0; i < columns; i++) {
+            int maxColumnsSum = 0;
+            for (int j = 0; j < lines; j++) {
+                maxColumnsSum += arr[i][j];
+            }
+            if (maxColumnsSum > columnsSum){
+                columnsSum = maxColumnsSum;
+                maxLinesIndex = i;
+            }
+        }
+        for (int i = 0; i < lines; i++) {
+            System.out.print(arr[maxLinesIndex][i] + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < columns; i++) {
+            System.out.print(arr[i][maxColumnsIndex] + " ");
+        }
+    }
+}
