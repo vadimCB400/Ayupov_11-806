@@ -1,0 +1,38 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class hw1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean m = true;
+        int n = sc.nextInt();
+        int[][] array = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                array[i][j] = sc.nextInt();
+            }
+        }
+        int sum1 = 0;
+        int sum2 = 0;
+        for (int i = 0; i < n; i++) {
+            sum1 += array[i][i];
+        }
+        for (int i = 0; i < n; i++) {
+            sum2 += array[i][n - 1 - i];
+        }
+        if (sum1 != sum2){
+            m = false;
+        }
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = 0; j < n; j++) {
+                sum += array[i][j];
+            }
+            if (sum != sum1){
+                m = false;
+            }
+        }
+        System.out.println("Магический квадрат " + m);
+    }
+}
